@@ -1,0 +1,32 @@
+generator client{
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mysql"
+    url = env("DATABASE_URL")
+}
+
+model client {
+  id        Int @id @default(autoincrement())
+  name      String @db.VarChar(255) @default("")
+  email     String @unique @db.VarChar(255) @default("")
+  password  String @db.VarChar(255) @default("")
+  phone     String @db.VarChar(255) @default("")
+
+
+  @@map("clients")
+}
+
+model Restaurant {
+  id        Int @id @default(autoincrement())
+  name      String @db.VarChar(255) @default("")
+  email     String @unique @db.VarChar(255) @default("")
+  password  String @db.VarChar(255) @default("")
+  phone     String @db.VarChar(255) @default("")
+  cnpj      String @db.VarChar(255) @default("")
+  loc       String @db.VarChar(255) @default("")
+  PostFood  Boolean @default(false)
+
+  @@map("restaurants")
+}
